@@ -13,6 +13,7 @@ class Song(db.Model):
     """Song model."""
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(50), nullable=False)
+    photo_url = db.Column(URLType)
     date = db.Column(db.Date)
 
     # The Artist who composed the song
@@ -56,6 +57,7 @@ songs_genre_table = db.Table('song_genre',
 class Playlist(db.Model):
     """Playlist model."""
     id = db.Column(db.Integer, primary_key=True)
+    photo_url = db.Column(URLType)
     name = db.Column(db.String(50), nullable=False, unique=True)
     
     # Which song is in this playlist?

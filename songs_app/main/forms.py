@@ -12,6 +12,7 @@ class SongForm(FlaskForm):
     """Form to create a song."""
     title = StringField('Song Title',
         validators=[DataRequired(), Length(min=1, max=80)])
+    photo_url = StringField('Photo', validators=[URL()])
     date = DateField('Date Released')
     artist = QuerySelectField('Artist',
         query_factory=lambda: Artist.query, allow_blank=False)
@@ -41,4 +42,5 @@ class PlaylistForm(FlaskForm):
     """Form to create a playlist."""
     name = StringField('Genre Name',
         validators=[DataRequired(), Length(min=3, max=80)])
+    photo_url = StringField('Photo', validators=[URL()])
     submit = SubmitField('Submit')
