@@ -92,7 +92,8 @@ def create_playlist():
     form = PlaylistForm()
     if form.validate_on_submit():
         new_playlist = Playlist(
-            name=form.name.data
+            name=form.name.data,
+            user = current_user
         )
         db.session.add(new_playlist)
         db.session.commit()

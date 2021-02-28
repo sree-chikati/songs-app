@@ -6,7 +6,7 @@
 
 <ul>
 {% for playlist in all_playlists %}
-    <li><a href="/playlist/{{ playlist.id }}">{{ playlist.title }}</a> by {{ playlist.author.name }}</li>
+    <li><a href="/playlist/{{ playlist.id }}">{{ playlist.name }}</a></li>
 {% endfor %}
 </ul>
 

@@ -19,7 +19,7 @@ class SongForm(FlaskForm):
     genres = QuerySelectMultipleField('Genres',
         query_factory=lambda: Genre.query, allow_blank=False)
     playlists = QuerySelectMultipleField('Playlist',
-        query_factory=lambda: Genre.query, allow_blank=False)
+        query_factory=lambda: Playlist.query, allow_blank=False)
     submit = SubmitField('Submit')
 
 

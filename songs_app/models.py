@@ -45,10 +45,10 @@ class Artist(db.Model):
     songs = db.relationship('Song', back_populates='artist')
 
     def __str__(self):
-        return f'<Author: {self.name}>'
+        return f'<Artist: {self.name}>'
 
     def __repr__(self):
-        return f'<Author: {self.name}>'
+        return f'<Artist: {self.name}>'
     
 
 class Genre(db.Model):
