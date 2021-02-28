@@ -1,5 +1,6 @@
 """Create database models to represent tables."""
 from songs_app import db
+from sqlalchemy_utils import URLType
 from sqlalchemy.orm import backref
 from flask_login import UserMixin
 import enum
@@ -59,7 +60,7 @@ class Genre(db.Model):
     songs = db.relationship(
         'Song', secondary='song_genre', back_populates='genres')
 
-     def __str__(self):
+    def __str__(self):
         return f'<Genre: {self.name}>'
 
     def __repr__(self):
@@ -74,7 +75,6 @@ songs_genre_table = db.Table('song_genre',
 class Playlist(db.Model):
     """Playlist model."""
     id = db.Column(db.Integer, primary_key=True)
-    photo_url = db.Column(URLType)
     name = db.Column(db.String(50), nullable=False, unique=True)
     
     # Which song is in this playlist?
