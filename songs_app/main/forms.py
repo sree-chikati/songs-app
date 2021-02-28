@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, DateField, SelectField, SubmitField, TextAreaField
 from wtforms.ext.sqlalchemy.fields import QuerySelectField, QuerySelectMultipleField
-from wtforms.validators import DataRequired, Length, ValidationError
+from wtforms.validators import DataRequired, Length, ValidationError, URL
 from songs_app.models import Song, Artist, Genre, Playlist, User
 
 #Forms: 
@@ -40,7 +40,6 @@ class GenreForm(FlaskForm):
 
 class PlaylistForm(FlaskForm):
     """Form to create a playlist."""
-    name = StringField('Genre Name',
+    name = StringField('Playlist Name',
         validators=[DataRequired(), Length(min=3, max=80)])
-    photo_url = StringField('Photo', validators=[URL()])
     submit = SubmitField('Submit')

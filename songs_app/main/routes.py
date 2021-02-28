@@ -3,7 +3,7 @@ from flask import Blueprint, request, render_template, redirect, url_for, flash
 from flask_login import login_user, logout_user, login_required, current_user
 from datetime import date, datetime
 from songs_app.models import Song, Artist, Genre, Playlist, User
-from songs_app.main.forms import SongFrom, ArtistForm, GenreForm, PlaylistForm
+from songs_app.main.forms import SongForm, ArtistForm, GenreForm, PlaylistForm
 from songs_app import bcrypt
 
 # Import app and db from songs_app package so that we can run app
@@ -62,7 +62,7 @@ def create_artist():
         db.session.commit()
 
         flash('New artist created successfully.')
-        return redirect(url_for('main.user'))
+        return redirect(url_for('main.user_page'))
     
     # if form was not valid, or was not submitted yet
     return render_template('create_artist.html', form=form)
@@ -80,7 +80,7 @@ def create_genre():
         db.session.commit()
 
         flash('New genre created successfully.')
-        return redirect(url_for('main.user'))
+        return redirect(url_for('main.user_page'))
     
     # if form was not valid, or was not submitted yet
     return render_template('create_genre.html', form=form)
@@ -92,14 +92,13 @@ def create_playlist():
     form = PlaylistForm()
     if form.validate_on_submit():
         new_playlist = Playlist(
-            name=form.name.data,
-            photo_url = form.photo_url.data
+            name=form.name.data
         )
         db.session.add(new_playlist)
         db.session.commit()
 
         flash('New playlist created successfully.')
-        return redirect(url_for('main.user'))
+        return redirect(url_for('main.user_page'))
     
     # if form was not valid, or was not submitted yet
     return render_template('create_playlist.html', form=form)
@@ -129,7 +128,7 @@ def song_detail(song_id):
 
 @main.route('/profile/<username>')
 def profile(username):
-    user = User.query.filter_by(username=username).one()
+    user = User.query.filter_by(username=username)
     return render_template('profile.html', user=user)
 
 
