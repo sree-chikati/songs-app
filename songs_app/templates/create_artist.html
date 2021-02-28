@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p>Artist creation form.</p>
+
+<form method="POST" action="{{ url_for('main.create_artist') }}">
+    {{ form.csrf_token }}
+    <fieldset>
+        <legend>Enter an Artist</legend>
+
+        {{ form.name.label }}
+        {{ form.name }}
+        <ul>
+        {% for error in form.name.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+
+        {{ form.about.label }}
+        {{ form.about }}
+        <ul>
+        {% for error in form.about.errors %}
+            <li class="error">{{ error }}</li>
+        {% endfor %}
+        </ul>
+            
+        {{ form.submit }}
+    </fieldset>
+</form>
+
+
+{% endblock %}

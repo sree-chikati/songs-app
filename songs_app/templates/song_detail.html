@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{{ song.title }}</h1>
+
+<img src="{{ song.photo_url }}" alt="{{ song.name }}" width="200px">
+
+<p>
+    <strong>Artist</strong>: {{ song.artist.name }}
+</p>
+
+<p>
+    <strong>Artist Bio</strong>: {{ song.artist.about }}
+</p>
+
+{% if song.date %}
+<p>
+    <strong>Release date</strong>: {{ song.date.strftime('%B %d, %Y') }}
+</p>
+{% endif %}
+
+<p>
+    <strong>Genres</strong>: 
+    
+    {% for genre in song.genres %}
+        {{ genre.name }},
+    {% endfor %}
+</p>
+
+<p>
+    <strong>Playlists</strong>: 
+    
+    {% for playlist in song.playlists %}
+        {{ playlist.name }},
+    {% endfor %}
+</p>
+
+<form method="POST" action="{{ url_for('main.song_detail', song_id=song.id) }}">
+    {{ form.csrf_token }}
+    <fieldset>
+        <legend>Edit this song</legend>
+
+        {{ form.title.label }}
+        {{ form.title }}
+
+        {{ form.photo_url.label }}
+        {{ form.photo_url }}
+        
+        {{ form.date.label }}
+        {{ form.date(placeholder="YYYY-mm-dd") }}
+        
+        {{ form.artist.label }}
+        {{ form.artist }}
+        
+        {{ form.genres.label }}
+        {{ form.genres }}
+
+        {{ form.playlists.label }}
+        {{ form.playlists }}
+            
+        {{ form.submit }}
+    </fieldset>
+</form>
+
+{% endblock %}
