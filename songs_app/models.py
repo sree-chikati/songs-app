@@ -28,6 +28,11 @@ class Song(db.Model):
     playlists = db.relationship(
         'Playlist', secondary='song_in_playlist', back_populates='songs')
 
+    def __str__(self):
+        return f'<Song: {self.title}>'
+
+    def __repr__(self):
+        return f'<Song: {self.title}>'
 
 class Artist(db.Model):
     """Artist model."""
@@ -37,6 +42,12 @@ class Artist(db.Model):
     
     # The Songs composed by the Artist
     songs = db.relationship('Song', back_populates='artist')
+
+    def __str__(self):
+        return f'<Author: {self.name}>'
+
+    def __repr__(self):
+        return f'<Author: {self.name}>'
     
 
 class Genre(db.Model):
@@ -47,6 +58,12 @@ class Genre(db.Model):
     # The genre a song belongs to
     songs = db.relationship(
         'Song', secondary='song_genre', back_populates='genres')
+
+     def __str__(self):
+        return f'<Genre: {self.name}>'
+
+    def __repr__(self):
+        return f'<Genre: {self.name}>'
 
 songs_genre_table = db.Table('song_genre',
     db.Column('song_id', db.Integer, db.ForeignKey('song.id')),
@@ -68,6 +85,12 @@ class Playlist(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     user = db.relationship('User', back_populates='playlists')
 
+    def __str__(self):
+        return f'<Playlist: {self.name}>'
+
+    def __repr__(self):
+        return f'<Playlist: {self.name}>'
+
 
 playlist_songs_table = db.Table('song_in_playlist',
     db.Column('song_id', db.Integer, db.ForeignKey('song.id')),
@@ -81,6 +104,9 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(80), nullable=False, unique=True)
     name = db.Column(db.String(80), nullable=False)
     password = db.Column(db.String(50), nullable=False)
+
+    def __repr__(self):
+        return f'<User: {self.name}>'
 
     # The playlists part of User
     playlists = db.relationship('Playlist', back_populates='user')
