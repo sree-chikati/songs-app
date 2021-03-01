@@ -8,6 +8,14 @@ h1 {
   text-transform: uppercase;
 }
 
+h5{
+    color: black!important;
+}
+
+p{
+    color: black!important;
+}
+
 .btn-primary{
   box-shadow: none;
   padding: 8px 25px;
