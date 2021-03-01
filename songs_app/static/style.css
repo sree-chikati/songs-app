@@ -164,6 +164,16 @@ input[type=submit] {
   color: black!important;
 }
 
+/*------ Create_playlist Section ------*/
+.create_playlist{
+  color: black!important;
+  padding: 5rem;
+}
+
+.create_playlist{
+  color: black!important;
+}
+
 /*============= FOOTER =============*/
 footer{
     background-image: linear-gradient(to right, #54a7ff, #5331ff);

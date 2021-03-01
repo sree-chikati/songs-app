@@ -2,31 +2,36 @@
 
 {% block content %}
 
-<p>Playlist creation form.</p>
-
-<form method="POST" action="{{ url_for('main.create_playlist') }}">
-    {{ form.csrf_token }}
-    <fieldset>
-        <legend>Enter a Playlist</legend>
-
-        {{ form.name.label }}
-        {{ form.name }}
-        <ul>
-        {% for error in form.name.errors %}
-            <li class="error">{{ error }}</li>
-        {% endfor %}
-        </ul>
-
-        {{ form.photo_url.label }}
-        {{ form.photo_url }}
-        <ul>
-        {% for error in form.title.errors %}
-            <li class="error">{{ error }}</li>
-        {% endfor %}
-        </ul>
-        
-        {{ form.submit }}
-    </fieldset>
-</form>
+<div class="create_playlist">
+    <div class="container p-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <h1 class="text-center title">Create Your Playlist</h1>
+                    <form method="POST" action="{{ url_for('main.create_playlist') }}">
+                        {{ form.csrf_token }}
+                        <fieldset>
+                            <legend>Enter a Playlist</legend>
+                    
+                            {{ form.name.label }}
+                            {{ form.name }}
+                            <ul>
+                            {% for error in form.name.errors %}
+                                <li class="error">{{ error }}</li>
+                            {% endfor %}
+                            </ul>
+                    
+                            {{ form.photo_url.label }}
+                            {{ form.photo_url }}
+                            
+                            {{ form.submit }}
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
+
