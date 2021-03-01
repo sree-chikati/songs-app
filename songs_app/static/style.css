@@ -196,6 +196,18 @@ input[type=submit] {
   color: black!important;
 }
 
+/*------ Create_genre Section ------*/
+
+.create_artist{
+  color: black!important;
+  padding: 5rem;
+  padding: 80px 0;
+}
+
+.create_artist{
+  color: black!important;
+}
+
 /*============= FOOTER =============*/
 footer{
     background-image: linear-gradient(to right, #54a7ff, #5331ff);

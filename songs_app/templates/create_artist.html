@@ -2,32 +2,40 @@
 
 {% block content %}
 
-<p>Artist creation form.</p>
-
-<form method="POST" action="{{ url_for('main.create_artist') }}">
-    {{ form.csrf_token }}
-    <fieldset>
-        <legend>Enter an Artist</legend>
-
-        {{ form.name.label }}
-        {{ form.name }}
-        <ul>
-        {% for error in form.name.errors %}
-            <li class="error">{{ error }}</li>
-        {% endfor %}
-        </ul>
-
-        {{ form.about.label }}
-        {{ form.about }}
-        <ul>
-        {% for error in form.about.errors %}
-            <li class="error">{{ error }}</li>
-        {% endfor %}
-        </ul>
-            
-        {{ form.submit }}
-    </fieldset>
-</form>
-
+<div class="create_artist">
+    <div class="container p-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <h1 class="text-center title">Add an Artist</h1>
+                    <form method="POST" action="{{ url_for('main.create_artist') }}">
+                        {{ form.csrf_token }}
+                        <fieldset>
+                            <legend>Enter an Artist</legend>
+                    
+                            {{ form.name.label }}
+                            {{ form.name }}
+                            <ul>
+                            {% for error in form.name.errors %}
+                                <li class="error">{{ error }}</li>
+                            {% endfor %}
+                            </ul>
+                    
+                            {{ form.about.label }}
+                            {{ form.about }}
+                            <ul>
+                            {% for error in form.about.errors %}
+                                <li class="error">{{ error }}</li>
+                            {% endfor %}
+                            </ul>
+                                
+                            {{ form.submit }}
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
