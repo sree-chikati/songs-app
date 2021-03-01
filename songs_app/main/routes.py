@@ -18,14 +18,22 @@ main = Blueprint("main", __name__)
 @main.route('/')
 def home():
     '''Display homepage'''
-    return render_template('home.html')
+    all_users = User.query.all()
+    return render_template('home.html', all_users=all_users)
 
 @main.route('/user')
 def user_page():
     all_playlists = Playlist.query.all()
-    all_users = User.query.all()
     return render_template('user.html',
-        all_playlists=all_playlists, all_users=all_users)
+        all_playlists=all_playlists)
+
+
+@main.route('/playlists')
+@login_required
+def playlists():
+    current_playlists = Playlist.query.filter_by(user=current_user)
+    return render_template('playlists.html',
+        current_playlists=current_playlists)
 
 
 @main.route('/create_song', methods=['GET', 'POST'])
@@ -106,6 +114,7 @@ def create_playlist():
 
 
 @main.route('/song/<song_id>', methods=['GET', 'POST'])
+@login_required
 def song_detail(song_id):
     song = Song.query.get(song_id)
     form = SongForm(obj=song)
@@ -114,7 +123,7 @@ def song_detail(song_id):
     if form.validate_on_submit():
         song.title = form.title.data
         song.photo_url = form.photo_url.data,
-        song.date = form.publish_date.data
+        song.date = form.date.data
         song.artist = form.artist.data
         song.genres = form.genres.data
         song.playlists = form.playlists.data
