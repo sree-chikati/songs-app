@@ -122,7 +122,7 @@ input[type=submit] {
 .banner{
     background-image: linear-gradient(to right, #54a7ff, #5331ff);
     color: white;
-    padding-top: 5%;
+    padding: 140px 0;
 }
 
 .banner h1{
@@ -147,7 +147,7 @@ input[type=submit] {
 /*------ Profile Section ------*/
 .profile{
   color: black!important;
-  padding: 5%;
+  padding: 0 0 180px 0;
 }
 
 .profile h4{
@@ -170,7 +170,7 @@ input[type=submit] {
   padding: 5rem;
 }
 
-.create_playlist{
+.create_playlist h4{
   color: black!important;
 }
 
@@ -180,7 +180,7 @@ input[type=submit] {
   padding: 5rem;
 }
 
-.create_song{
+.create_song h4{
   color: black!important;
 }
 
@@ -192,7 +192,7 @@ input[type=submit] {
   padding: 80px 0;
 }
 
-.create_genre{
+.create_genre h4{
   color: black!important;
 }
 
@@ -204,7 +204,7 @@ input[type=submit] {
   padding: 80px 0;
 }
 
-.create_artist{
+.create_artist h4{
   color: black!important;
 }
 

@@ -74,7 +74,7 @@ def create_artist():
         db.session.commit()
 
         flash('New artist created successfully.')
-        return redirect(url_for('main.user_page'))
+        return redirect(url_for('main.home'))
     
     # if form was not valid, or was not submitted yet
     return render_template('create_artist.html', form=form)
@@ -92,7 +92,7 @@ def create_genre():
         db.session.commit()
 
         flash('New genre created successfully.')
-        return redirect(url_for('main.user_page'))
+        return redirect(url_for('main.home'))
     
     # if form was not valid, or was not submitted yet
     return render_template('create_genre.html', form=form)
@@ -112,7 +112,7 @@ def create_playlist():
         db.session.commit()
 
         flash('New playlist created successfully.')
-        return redirect(url_for('main.profile'))
+        return redirect(url_for('main.home'))
     
     # if form was not valid, or was not submitted yet
     return render_template('create_playlist.html', form=form)
