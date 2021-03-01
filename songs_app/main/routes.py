@@ -36,12 +36,12 @@ def profile(username):
     return render_template('profile.html',
         current_playlists=current_playlists)
 
-@main.route('/playlists/<id>')
+@main.route('/songs_in_playlist/<id>')
 @login_required
-def playlists(id):
+def songs_in_playlist(id):
     selected_playlist = Playlist.query.filter_by(id=id).one()
     all_songs = selected_playlist.songs
-    return render_template('playlists.html',
+    return render_template('songs_in_playlist.html',
     all_songs=all_songs)
 
 
