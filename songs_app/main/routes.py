@@ -28,12 +28,21 @@ def user_page():
         all_playlists=all_playlists)
 
 
-@main.route('/playlists')
+@main.route('/profile/<username>')
 @login_required
-def playlists():
-    current_playlists = Playlist.query.filter_by(user=current_user)
-    return render_template('playlists.html',
+def profile(username):
+    user = User.query.filter_by(username=username).one()
+    current_playlists = user.playlists
+    return render_template('profile.html',
         current_playlists=current_playlists)
+
+@main.route('/playlists/<id>')
+@login_required
+def playlists(id):
+    selected_playlist = Playlist.query.filter_by(id=id).one()
+    all_songs = selected_playlist.songs
+    return render_template('playlists.html',
+    all_songs=all_songs)
 
 
 @main.route('/create_song', methods=['GET', 'POST'])
@@ -116,13 +125,13 @@ def create_playlist():
 @main.route('/song/<song_id>', methods=['GET', 'POST'])
 @login_required
 def song_detail(song_id):
-    song = Song.query.get(song_id)
+    song = Song.query.filter_by(id=song_id).one()
     form = SongForm(obj=song)
     
     # if form was submitted and contained no errors
     if form.validate_on_submit():
         song.title = form.title.data
-        song.photo_url = form.photo_url.data,
+        song.photo_url = form.photo_url.data
         song.date = form.date.data
         song.artist = form.artist.data
         song.genres = form.genres.data
@@ -134,12 +143,6 @@ def song_detail(song_id):
         return redirect(url_for('main.song_detail', song_id=song_id))
 
     return render_template('song_detail.html', song=song, form=form)
-
-
-@main.route('/profile/<username>')
-def profile(username):
-    user = User.query.filter_by(username=username)
-    return render_template('profile.html', user=user)
 
 
 
