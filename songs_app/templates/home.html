@@ -17,7 +17,6 @@
                             {% for playlist in all_playlists %}
                             <div class="col-md-4">
                                 <div class="card p-2 m-2">
-                                    <img src="{{url_for('static', filename='Logo.png')}}" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ playlist.name }}</h5>
                                         <a href="/songs_in_playlist/{{ playlist.id }}" class="btn btn-primary btn-md">View Playlist</a>
