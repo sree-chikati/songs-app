@@ -112,7 +112,7 @@ def create_playlist():
         db.session.commit()
 
         flash('New playlist created successfully.')
-        return redirect(url_for('main.user_page'))
+        return redirect(url_for('main.profile'))
     
     # if form was not valid, or was not submitted yet
     return render_template('create_playlist.html', form=form)
