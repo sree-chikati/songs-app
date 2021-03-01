@@ -40,7 +40,7 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         login_user(user, remember=True)
         next_page = request.args.get('next')
-        return redirect(next_page if next_page else url_for('main.user_page'))
+        return redirect(next_page if next_page else url_for('main.home'))
     print(form.errors)
     return render_template('login.html', form=form)
 

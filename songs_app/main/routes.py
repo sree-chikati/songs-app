@@ -17,14 +17,9 @@ main = Blueprint("main", __name__)
 
 @main.route('/')
 def home():
-    '''Display homepage'''
-    all_users = User.query.all()
-    return render_template('home.html', all_users=all_users)
-
-@main.route('/user')
-def user_page():
+    '''Display homepage with all playlists from users'''
     all_playlists = Playlist.query.all()
-    return render_template('user.html',
+    return render_template('home.html',
         all_playlists=all_playlists)
 
 
