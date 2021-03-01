@@ -27,7 +27,7 @@ p{
 }
 
 .title{
-    color: white;
+    color: black;
 }
 
 .title::after{
@@ -140,6 +140,17 @@ input[type=submit] {
 
 .log-content{
   padding: 80px 0;
+}
+
+
+/*------ Profile Section ------*/
+.profile{
+  color: black!important;
+  padding-top: 5%;
+}
+
+.profile h4{
+  color: black!important;
 }
 
 /*============= FOOTER =============*/

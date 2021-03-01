@@ -2,14 +2,32 @@
 
 {% block content %}
 
-<p>Created By {{ current_user.name }}</p>
-
-<h2>Playlist</h2>
-
-<ul>
-    {% for playlist in current_playlists %}
-        <li><a href="/songs_in_playlist/{{ playlist.id }}">{{ playlist.name }}</a></li>
-    {% endfor %}
-</ul>
+<section class="profile">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="py-4">Created By {{ current_user.name }}</h4>
+                <!-- All Playlists Content -->
+                <div class="play">
+                    <h2 class="title">Your Playlists</h2>
+                    <div class="container">
+                        <div class="row">
+                            {% for playlist in current_playlists %}
+                            <div class="col-md-4">
+                                <div class="card p-2 m-2">
+                                    <img src="{{url_for('static', filename='Logo.png')}}" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ playlist.name }}</h5>
+                                        <a href="/songs_in_playlist/{{ playlist.id }}" class="btn btn-primary btn-md">View Playlist</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>    
+                </div>
+            </div>
+        </div>
+</section>
 
 {% endblock %}
