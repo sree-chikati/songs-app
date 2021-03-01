@@ -2,18 +2,31 @@
 
 {% block content %}
 
-<p>Include inststruction on how to use</p>
+<!-- MAIN CONTENT -->
+<section class="banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center">Songs App🎶</h1>
+                <h4 class="py-4 text-center">App where you can create playlists and songs</h4>
+                <!-- All Playlists Content -->
+                <div class="play">
+                    <h2 class="title text-center">ALL PLAYLISTS</h2>
+                    <p><a href="/create_playlist">+ New Playlist</a></p>
+            
+                    <ul>
+                        {% for playlist in all_playlists %}
+                            <li><a href="/songs_in_playlist/{{ playlist.id }}">{{ playlist.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<h2>All Playlists</h2>
 
-<p>
-    <a href="/create_playlist">+ New Playlist</a>
-</p>
-
-<ul>
-    {% for playlist in all_playlists %}
-        <li><a href="/songs_in_playlist/{{ playlist.id }}">{{ playlist.name }}</a></li>
-    {% endfor %}
-</ul>
-
+<section id="play">
+    
+</section>
 {% endblock %}
