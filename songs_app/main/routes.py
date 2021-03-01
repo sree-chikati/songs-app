@@ -105,6 +105,7 @@ def create_playlist():
     if form.validate_on_submit():
         new_playlist = Playlist(
             name=form.name.data,
+            photo_url = form.photo_url.data,
             user = current_user
         )
         db.session.add(new_playlist)

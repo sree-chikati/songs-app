@@ -42,4 +42,5 @@ class PlaylistForm(FlaskForm):
     """Form to create a playlist."""
     name = StringField('Playlist Name',
         validators=[DataRequired(), Length(min=3, max=80)])
+    photo_url = StringField('Photo', validators=[URL()])
     submit = SubmitField('Submit')

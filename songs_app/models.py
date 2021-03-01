@@ -68,6 +68,7 @@ class Playlist(db.Model):
     """Playlist model."""
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False, unique=True)
+    photo_url = db.Column(URLType)
     
     # Which song is in this playlist?
     songs = db.relationship(
