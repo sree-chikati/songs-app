@@ -146,10 +146,20 @@ input[type=submit] {
 /*------ Profile Section ------*/
 .profile{
   color: black!important;
-  padding-top: 5%;
+  padding: 5%;
 }
 
 .profile h4{
+  color: black!important;
+}
+
+/*------ Songs_in_playlist Section ------*/
+.songs_in_playlist{
+  color: black!important;
+  padding: 5rem;
+}
+
+.songs_in_playlist h4{
   color: black!important;
 }
 
