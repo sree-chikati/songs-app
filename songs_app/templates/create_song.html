@@ -2,61 +2,72 @@
 
 {% block content %}
 
-<form method="POST" action="{{ url_for('main.create_song') }}">
-    {{ form.csrf_token }}
-    <fieldset>
-        <legend>Enter a song</legend>
-
-        {{ form.title.label }}
-        {{ form.title }}
-        <ul>
-        {% for error in form.title.errors %}
-            <li class="error">{{ error }}</li>
-        {% endfor %}
-        </ul>
-
-        {{ form.photo_url.label }}
-        {{ form.photo_url }}
-        <ul>
-        {% for error in form.title.errors %}
-            <li class="error">{{ error }}</li>
-        {% endfor %}
-        </ul>
-        
-        {{ form.date.label }}
-        {{ form.date(placeholder="YYYY-mm-dd") }}
-        <ul>
-        {% for error in form.title.errors %}
-            <li class="error">{{ error }}</li>
-        {% endfor %}
-        </ul>
-        
-        {{ form.artist.label }}
-        {{ form.artist }}
-        <ul>
-        {% for error in form.artist.errors %}
-            <li class="error">{{ error }}</li>
-        {% endfor %}
-        </ul>
-        
-        {{ form.genres.label }}
-        {{ form.genres }}
-        <ul>
-        {% for error in form.genres.errors %}
-            <li class="error">{{ error }}</li>
-        {% endfor %}
-        </ul>
-        
-        {{ form.playlists.label }}
-        {{ form.playlists }}
-        <ul>
-        {% for error in form.playlists.errors %}
-            <li class="error">{{ error }}</li>
-        {% endfor %}
-        </ul>
-            
-        {{ form.submit }}
-    </fieldset>
-</form>
+<div class="create_song">
+    <div class="container p-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <h1 class="text-center title">Create A Song</h1>
+                    <form method="POST" action="{{ url_for('main.create_song') }}">
+                        {{ form.csrf_token }}
+                        <fieldset>
+                            <legend>Enter a song</legend>
+                    
+                            {{ form.title.label }}
+                            {{ form.title }}
+                            <ul>
+                            {% for error in form.title.errors %}
+                                <li class="error">{{ error }}</li>
+                            {% endfor %}
+                            </ul>
+                    
+                            {{ form.photo_url.label }}
+                            {{ form.photo_url }}
+                            <ul>
+                            {% for error in form.title.errors %}
+                                <li class="error">{{ error }}</li>
+                            {% endfor %}
+                            </ul>
+                            
+                            {{ form.date.label }}
+                            {{ form.date(placeholder="YYYY-mm-dd") }}
+                            <ul>
+                            {% for error in form.title.errors %}
+                                <li class="error">{{ error }}</li>
+                            {% endfor %}
+                            </ul>
+                            
+                            {{ form.artist.label }}
+                            {{ form.artist }}
+                            <ul>
+                            {% for error in form.artist.errors %}
+                                <li class="error">{{ error }}</li>
+                            {% endfor %}
+                            </ul>
+                            
+                            {{ form.genres.label }}
+                            {{ form.genres }}
+                            <ul>
+                            {% for error in form.genres.errors %}
+                                <li class="error">{{ error }}</li>
+                            {% endfor %}
+                            </ul>
+                            
+                            {{ form.playlists.label }}
+                            {{ form.playlists }}
+                            <ul>
+                            {% for error in form.playlists.errors %}
+                                <li class="error">{{ error }}</li>
+                            {% endfor %}
+                            </ul>
+                                
+                            {{ form.submit }}
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

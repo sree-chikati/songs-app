@@ -174,6 +174,16 @@ input[type=submit] {
   color: black!important;
 }
 
+/*------ Create_song Section ------*/
+.create_song{
+  color: black!important;
+  padding: 5rem;
+}
+
+.create_song{
+  color: black!important;
+}
+
 /*============= FOOTER =============*/
 footer{
     background-image: linear-gradient(to right, #54a7ff, #5331ff);
