@@ -2,12 +2,13 @@
 
 {% block content %}
 
-<h2>Playlist</h2>
+<p>Created By {{ current_user.name }}</p>
+
+<h2>Song</h2>
 
 <ul>
-    <p>Created By {{ current_user.name }}</p>
-    {% for playlist in all_playlists %}
-        <li><a href="/playlist/{{ playlist.name }}">{{ playlist.name }}</a></li>
+    {% for song in all_songs %}
+        <li><a href="/song/{{ song.id }}">{{ song.title }}</a></li>
     {% endfor %}
 </ul>
 
