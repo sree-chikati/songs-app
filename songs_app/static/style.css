@@ -68,6 +68,7 @@ fieldset input {
 }
 
 input[type=submit] {
+    margin: 1rem;
     align-self: flex-end;
     box-shadow: none;
     padding: 8px 25px;
