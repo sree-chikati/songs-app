@@ -1,40 +1,152 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Grocery Store Tracker</title>
-        <link rel="stylesheet" href="/static/style.css">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <div id="content">
-            <nav>
-                <a href="/">Home</a>
-                <div>
-                    {% if current_user.is_authenticated %}
-                    <a href="/profile/{{ current_user.username }}">Profile</a>
-                    <a href="/create_playlist">Create Playlist</a>
-                    <a href="/create_song">Create Song</a>
-                    <a href="/create_artist">Create Artist</a>
-                    <a href="/create_genre">Create Genre</a>
-                    <a href="/logout">Log Out</a>
-                    {% else %}
-                    <a href="/user">User</a>
-                    <a href="/signup">Sign Up</a>
-                    <a href="/login">Log In</a>
-                    {% endif %}
-                </div>
-            </nav>
 
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Songs App🎶</title>
+
+  <!-- BOOTSTRAP STYLESHEET LINK-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <!-- BOOTSTRAP THEME -->
+  <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+  <!-- CUSTOM STYLES -->
+  <link rel="stylesheet" href="/static/style.css">
+  <!-- AOS CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+</head>
+
+<body>
+    <!-- Fix this later -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog text-center">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <ul class=flashes>
+                        {% for message in messages %}
+                        <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    {% endwith %}
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  {% if current_user.is_authenticated %}
+  <p>You are logged in as {{ current_user.name }}</p>
+  {% endif %}
+
+  <!--  HOME NAV BAR -->
+  <nav class="navbar bg-light navbar-dark navbar-expand-lg">
+    <div class="container">
+        <!-- Home Route -->
+        <a href="/" class="navbar-brand">🎶</a>
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
             {% if current_user.is_authenticated %}
-            <p>You are logged in as {{ current_user.name }}</p>
+                <!-- Profile Route -->
+                <li class="nav-item">
+                    <a href="/profile/{{ current_user.username }}">Profile</a>
+                </li>
+                <!-- Create Playlist Route -->
+                <li class="nav-item">
+                    <a href="/create_playlist">Create Playlist</a>
+                </li>
+                <!-- Create Song Route -->
+                <li class="nav-item">
+                    <a href="/create_song">Create Song</a>
+                </li>
+                <!-- Create Artist Route -->
+                <li class="nav-item">
+                    <a href="/create_artist">Create Artist</a>
+                </li>
+                <!-- Create Genre Route -->
+                <li class="nav-item">
+                    <a href="/create_genre">Create Genre</a>
+                </li>
+                <!-- Logout Route -->
+                <li class="nav-item">
+                    <a href="/logout">Log Out</a>
+                </li>
+
+            {% else %}
+                <!-- Signup Route -->
+                <li class="nav-item">
+                    <a href="/signup">Sign Up</a>
+                </li>
+                <!-- Login Route -->
+                <li class="nav-item">
+                    <a href="/login">Login</a>
+                </li>
             {% endif %}
 
-            {% for message in get_flashed_messages() %}
-                <p>{{ message }}</p>
-            {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- End Navbar -->
 
-            {% block content %}{% endblock %}
-        </div>
-    </body>
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+    {% block content %}
+    {% endblock %}
+  </div>  
+  <!-- End Main Content -->
+
+ 
+  <!--FOOTER-->  
+  <footer>
+    <h3>SONGS APP by <span>Sree Chikati</span></h3>
+    <p> Source Code:</p>
+    <div id = "find">
+        <a href="https://github.com/sree-chikati/songs-app" class="github" title="Github">
+            <i class="fa fa-github fa-3x"></i>
+        </a>
+    </div>
+  </footer>
+  <!-- End Footer -->
+  <!-- End Footer -->
+
+<!-- AOS EFFECTS INITIALIZATION -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+    AOS.init({
+        disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
+        duration: 750,
+        offset: 120,
+        easing: 'ease-in-out'
+    });
+</script>
+<!-- SCRIPT FOR FONT AWESOME -->
+<script src="https://kit.fontawesome.com/2cf12949d8.js" crossorigin="anonymous"></script>
+<!-- jQuery first-->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<!--Popper.js-->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<!--Bootstrap JS-->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script>
+  /* Trigger flash modal */
+  $(document).ready(function() {
+      var messages = "{{ get_flashed_messages() }}";
+
+      if (typeof messages != 'undefined' && messages != '[]') {
+          $("#myModal").modal();
+      };
+  });
+</script>
+</body>
 </html>

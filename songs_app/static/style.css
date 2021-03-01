@@ -1,52 +1,201 @@
+
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #eee;
-    font-family: 'Open Sans', sans-serif;
+  overflow-x: hidden;
+  background: white;
 }
 
-#content {
-    width: 70%;
-    background-color: white;
-    padding: 20px;
+h1 {
+  text-transform: uppercase;
 }
 
-nav {
+.btn-primary{
+  box-shadow: none;
+  padding: 8px 25px;
+  border: none;
+  border-radius: 20px;
+  background-image: linear-gradient(to right, #54ffac, #54a7ff);
+  color: black;
+}
+
+.title::before {
+  content: '';
+  background-color: #54ffac;
+  height: 5px;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  transform: translateY(63px);
+}
+
+.title::after {
+  content: '';
+  background-color: #54ffac;
+  height: 10px;
+  width: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+  display: block;
+  transform: translateY(18px);
+}
+
+.modal-content{
+  background-color: #ff847ec7;
+}
+
+.modal-body li{
+  list-style: none;
+  color: white;
+}
+
+/*============= TOP BAR HEADER =============*/
+.top-bar {
+  height: 2.8rem;
+  padding: 0.5rem 0;
+}
+
+.top-bar a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+/*============= NAVIGATION =============*/
+.navbar {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  padding: 0.5rem;
+  z-index: 1;
+  border: none;
+  background-image: linear-gradient(to right, #54a7ff, #5331ff);
+}
+
+.navbar-nav li a{
+  color: white!important;
+  font-weight: 600px;
+  float: right;
+  text-align: left;
+}
+
+.nav-item.active,
+.nav-item:hover {
+  color: #54a7ff !important;
+}
+
+.navbar-toggler {
+  color: white!important;
+}
+
+/*============= FOOTER =============*/
+footer{
+    background-image: linear-gradient(to right, #54a7ff, #5331ff);
+    color: white;
     width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-nav a {
-    color: navy;
-    text-decoration: none;
-    border: 1px solid black;
-    padding: 1px 5px;
-    font-size: 1.2em;
-}
-
-fieldset {
+    text-align: center;
     display: flex;
     flex-direction: column;
-    margin: 20px 0;
-    padding: 20px;
-}
-
-fieldset * {
-    margin: 5px;
-}
-
-fieldset input {
-    padding: 5px;
-}
-
-input[type=submit] {
-    padding: 10px 20px;
-    align-self: flex-end;
-}
-
-li.error {
-    color: red;
-}
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+  
+  footer h3{
+      color: white;
+      font-size: 15px;
+      text-transform: uppercase;
+  }
+  
+  footer p{
+      padding: 0.5rem;
+      text-transform: uppercase;
+  }
+  
+  footer span{
+      color:#54ffac;;
+  }
+  .github{
+    color: white;
+    text-decoration: none;
+    padding: 1rem 1rem 0 1rem;
+  }
+  
+  .github:hover{
+    color: #54ffac;
+  }
+  
+  
+  /*============= MEDIA QUERIES =============*/
+  
+  /* Devices under 1199px (xl) */
+  @media (max-width: 1199.98px) {
+    .waves {
+      height: 100px;
+      min-height: 100px;
+    }
+  }
+  /* Devices under 992px (lg) */
+  @media (max-width: 991.98px) {
+    .waves {
+      height:40px;
+      min-height:40px;
+    }
+  }
+  
+  /*============ BOOTSTRAP BREAK POINTS:
+    
+    Extra small (xs) devices (portrait phones, less than 576px)
+    No media query since this is the default in Bootstrap
+    
+    Small (sm) devices (landscape phones, 576px and up)
+    @media (min-width: 576px) { ... }
+    
+    Medium (md) devices (tablets, 768px and up)
+    @media (min-width: 768px) { ... }
+    
+    Large (lg) devices (desktops, 992px and up)
+    @media (min-width: 992px) { ... }
+    
+    Extra (xl) large devices (large desktops, 1200px and up)
+    @media (min-width: 1200px) { ... }
+    
+    =============*/
+  
+  /*-- Bootstrap Mobile Gutter Fix --*/
+  .row,
+  .container-fluid {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+  
+  /*-- Fixed Background Image --*/
+  .fixed-background {
+    position: relative;
+    width: 100%;
+    z-index: 1000 !important;
+  }
+  .fixed-wrap {
+    clip: rect(0, auto, auto, 0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -999 !important;
+  }
+  .fixed {
+    z-index: -999 !important;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
+  }
+  
+  /*============= RESULTS CARDS =============*/
