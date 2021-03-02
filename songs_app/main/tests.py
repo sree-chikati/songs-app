@@ -63,15 +63,13 @@ class MainTests(unittest.TestCase):
         db.create_all()
     
 
-    # TEST OKAY
+    # TEST PASSED
     def test_create_song(self):
         """Test creating a song."""
-        # Set up
         create_songs()
         create_user()
         login(self.app, 'test1', 'password')
 
-        # Make POST request with data
         post_data = {
             'title':'Truth Untold',
             'photo_url':"https://c-sf.smule.com/rs-s89/arr/bd/e3/6f18462a-4308-433a-9b4b-321a617849cf_1024.jpg",
@@ -80,30 +78,26 @@ class MainTests(unittest.TestCase):
         }
         self.app.post('/create_song', data=post_data)
 
-        # Make sure song was updated as we'd expect
         created_song = Song.query.filter_by(title='Truth Untold')
         self.assertIsNotNone(created_song)
     
     
-    #TEST OKAY
+    # TEST PASSED
     def test_create_song_logged_out(self):
         """
         Test that the user is redirected when trying to access the create song 
         route if not logged in.
         """
-        # Set up
         create_songs()
         create_user()
 
-        # Make GET request
         response = self.app.get('/create_song')
 
-        # Make sure that the user was redirecte to the login page
         self.assertEqual(response.status_code, 302)
         self.assertIn('/login?next=%2Fcreate_song', response.location)
     
     
-    #TEST OKAY
+    # TEST PASSED
     def test_create_artist(self):
         """Test creating an artist."""
         create_user()
@@ -118,7 +112,8 @@ class MainTests(unittest.TestCase):
         new_artist = Artist.query.filter_by(name='BTS').one()
         self.assertIsNotNone(new_artist)
     
-    #TEST OKAY
+
+    # TEST PASSED
     def test_create_genre(self):
         """Test creating a genre."""
         create_user()
@@ -133,7 +128,7 @@ class MainTests(unittest.TestCase):
         self.assertIsNotNone(new_genre)
     
     
-    #TEST OKAY
+    # TEST PASSED
     def test_create_playlist(self):
         """Test creating a playlist."""
         create_user()
@@ -149,7 +144,7 @@ class MainTests(unittest.TestCase):
         self.assertIsNotNone(new_playlist)
     
     
-    #TEST OKAY
+    # TEST PASSED
     def test_profile_page(self):
         """Test the profile page."""
         create_user()

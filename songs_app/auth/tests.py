@@ -57,7 +57,8 @@ class AuthTests(TestCase):
         db.drop_all()
         db.create_all()
 
-    # TEST OKAY
+    
+    # TEST PASSED
     def test_signup(self):
         """Test signup route."""
         post_data = {
@@ -70,7 +71,8 @@ class AuthTests(TestCase):
         new_user = User.query.filter_by(username = 'me-test@gmail.com')
         self.assertIsNotNone(new_user)
     
-    # TEST OKAY
+    
+    # TEST PASSED
     def test_signup_existing_user(self):
         """Test to see if user already exists."""
         post_data = {
@@ -84,7 +86,8 @@ class AuthTests(TestCase):
         response_text = response.get_data(as_text=True)
         self.assertIn('That username is taken. Please choose a different one.', response_text)
     
-    # TEST OKAY
+    
+    # TEST PASSED
     def test_login_correct_password(self):
         """Test with correct login passowrd."""
         create_user()
@@ -99,7 +102,8 @@ class AuthTests(TestCase):
         response = self.app.get('/', follow_redirects = True)
         response_text = response.get_data(as_text = True)
 
-    # TEST OKAY
+    
+    # TEST PASSED
     def test_login_nonexistent_user(self):
         """Test with a non-existent user"""
         post_data = {
@@ -112,7 +116,8 @@ class AuthTests(TestCase):
         response_text = response.get_data(as_text=True)
         self.assertIn('No user with that username. Please try again.', response_text)
     
-    # TEST OKAY
+    
+    # TEST PASSED
     def test_login_incorrect_password(self):
         """Test with incorrect password."""
         create_user()
@@ -127,7 +132,8 @@ class AuthTests(TestCase):
         response_text = response.get_data(as_text=True)
         self.assertIn("Password doesn&#39;t match. Please try again.", response_text)
     
-    # TEST OKAY
+    
+    # TEST PASSED
     def test_logout(self):
         """Test logout."""
         create_user()
