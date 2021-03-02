@@ -9,7 +9,7 @@ from songs_app.models import Song, Artist, Genre, Playlist, User
 
 
 class SongForm(FlaskForm):
-    """Form to create a song."""
+    """Form to create a Song."""
     title = StringField('Song Title',
         validators=[DataRequired(), Length(min=1, max=80)])
     photo_url = StringField('Photo', validators=[URL()])
@@ -32,14 +32,14 @@ class ArtistForm(FlaskForm):
 
 
 class GenreForm(FlaskForm):
-    """Form to create a genre."""
+    """Form to create a Genre."""
     name = StringField('Genre Name',
         validators=[DataRequired(), Length(min=3, max=80)])
     submit = SubmitField('Submit')
 
 
 class PlaylistForm(FlaskForm):
-    """Form to create a playlist."""
+    """Form to create a Playlist."""
     name = StringField('Playlist Name',
         validators=[DataRequired(), Length(min=3, max=80)])
     photo_url = StringField('Photo', validators=[URL()])

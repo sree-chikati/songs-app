@@ -9,6 +9,7 @@ from songs_app import bcrypt
 
 
 class SignUpForm(FlaskForm):
+    """Sign up Form"""
     username = StringField('Username',
         validators=[DataRequired(), Length(min=3, max=50)])
     name = StringField('Full Name',
@@ -23,6 +24,7 @@ class SignUpForm(FlaskForm):
 
 
 class LoginForm(FlaskForm):
+    """Login Form"""
     username = StringField('User Name',
         validators=[DataRequired(), Length(min=3, max=50)])
     password = PasswordField('Password', validators=[DataRequired()])
