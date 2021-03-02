@@ -26,14 +26,17 @@ def home():
 @main.route('/profile/<username>')
 @login_required
 def profile(username):
+    '''Display profile with all playlists from current_user'''
     user = User.query.filter_by(username=username).one()
     current_playlists = user.playlists
     return render_template('profile.html',
         current_playlists=current_playlists)
 
+
 @main.route('/songs_in_playlist/<id>')
 @login_required
 def songs_in_playlist(id):
+    '''Display selected playlist with all songs from that playlist'''
     selected_playlist = Playlist.query.filter_by(id=id).one()
     all_songs = selected_playlist.songs
     return render_template('songs_in_playlist.html',
@@ -43,6 +46,7 @@ def songs_in_playlist(id):
 @main.route('/create_song', methods=['GET', 'POST'])
 @login_required
 def create_song():
+    '''Create a Song Route'''
     form = SongForm()
     if form.validate_on_submit(): 
         new_song = Song(
@@ -64,6 +68,7 @@ def create_song():
 @main.route('/create_artist', methods=['GET', 'POST'])
 @login_required
 def create_artist():
+    '''Create a Artist Route'''
     form = ArtistForm()
     if form.validate_on_submit():
         new_artist = Artist(
@@ -83,6 +88,7 @@ def create_artist():
 @main.route('/create_genre', methods=['GET', 'POST'])
 @login_required
 def create_genre():
+    '''Create a Genre Route'''
     form = GenreForm()
     if form.validate_on_submit():
         new_genre = Genre(
@@ -101,6 +107,7 @@ def create_genre():
 @main.route('/create_playlist', methods=['GET', 'POST'])
 @login_required
 def create_playlist():
+    '''Create a Playlist Route'''
     form = PlaylistForm()
     if form.validate_on_submit():
         new_playlist = Playlist(
@@ -121,6 +128,7 @@ def create_playlist():
 @main.route('/song/<song_id>', methods=['GET', 'POST'])
 @login_required
 def song_detail(song_id):
+    '''Shows Details of a Song'''
     song = Song.query.filter_by(id=song_id).one()
     form = SongForm(obj=song)
     
