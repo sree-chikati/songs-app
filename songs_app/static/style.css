@@ -9,7 +9,7 @@ h1 {
   color: black!important;
 }
 
-h5{
+h5, h4{
     color: black!important;
 }
 
@@ -317,5 +317,3 @@ footer{
     transform: translateZ(0);
     will-change: transform;
   }
-  
-  /*============= RESULTS CARDS =============*/
