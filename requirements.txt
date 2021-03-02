@@ -12,3 +12,4 @@ WTForms==2.3.3
 gunicorn
 psycopg2-binary
 Flask-Login==0.5.0
+flask_bcrypt
