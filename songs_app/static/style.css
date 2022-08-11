@@ -98,7 +98,7 @@ input[type=submit] {
   padding: 0.5rem;
   z-index: 1;
   border: none;
-  background-image: linear-gradient(to right, #54a7ff, #5331ff);
+  background-image: linear-gradient(to right, #FECDC0, #FA582D);
 }
 
 .navbar-nav li a{
@@ -120,7 +120,7 @@ input[type=submit] {
 /*===== MAIN CONTENT =====*/
 /*------ Banner Section ------*/
 .banner{
-    background-image: linear-gradient(to right, #54a7ff, #5331ff);
+    background-image: linear-gradient(to right, #FECDC0, #FA582D);
     color: white;
     padding: 140px 0;
 }
@@ -210,7 +210,7 @@ input[type=submit] {
 
 /*============= FOOTER =============*/
 footer{
-    background-image: linear-gradient(to right, #54a7ff, #5331ff);
+    background-image: linear-gradient(to right, #FECDC0, #FA582D);
     color: white;
     width: 100%;
     text-align: center;
